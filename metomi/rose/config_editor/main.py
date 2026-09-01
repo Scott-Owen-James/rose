@@ -1041,11 +1041,11 @@ class MainController:
             )
             tab_window.connect(
                 "destroy-event",
-                lambda w, e: self.tab_windows.remove(w), False,
+                lambda w, e: self.tab_windows.remove(w) and False,  # NOQA: 223
             )
             tab_window.connect(
                 "delete-event",
-                lambda w, e: self.tab_windows.remove(w), False,
+                lambda w, e: self.tab_windows.remove(w) and False,  # NOQA: 223
             )
         else:
             tab_window = old_window
@@ -2140,7 +2140,9 @@ def spawn_window(
         full_namespaces = []
         for namespace in initial_namespaces:
             exp = re.compile(r"(.*%s?[^\/]+)" % (re.escape(namespace),))
-            for ns in sorted(ctrl.data.namespace_meta_lookup, key=len):
+            for ns in sorted(sorted(  # NOQA: C414
+                                      ctrl.data.namespace_meta_lookup),
+                             key=len):
                 match = exp.search(ns)
                 if match:
                     full_namespaces.append(match.groups()[0])

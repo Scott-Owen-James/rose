@@ -195,6 +195,7 @@ class Runner:
         if isinstance(opts, dict):
             opts = Dummy(**opts)
         cwd = os.getcwd()
+        environ = dict(os.environ)
         uuid = str(uuid4())
         work_files = []
         try:
@@ -214,7 +215,7 @@ class Runner:
             with contextlib.suppress(OSError):
                 os.chdir(cwd)
             # Reset os.environ
-            os.environ.clear()
+            os.environ = dict(environ)
 
     __call__ = run
 

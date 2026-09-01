@@ -254,6 +254,10 @@ class CustomMenuButton(Gtk.MenuToolButton):
         menu_items=None,
         menu_funcs=None,
     ):
+        if menu_items is None:
+            menu_items = []
+        if menu_funcs is None:
+            menu_funcs = []
         if stock_id is not None:
             self.stock_id = stock_id
             self.icon = Gtk.Image()
@@ -289,6 +293,10 @@ class ToolBar(Gtk.Toolbar):
     """An easier-to-use Gtk.Toolbar."""
 
     def __init__(self, widgets=None, sep_on_name=None):
+        if widgets is None:
+            widgets = []
+        if sep_on_name is None:
+            sep_on_name = []
         super(ToolBar, self).__init__()
         self.item_dict = {}
         self.show()
@@ -319,6 +327,8 @@ class ToolBar(Gtk.Toolbar):
             self.insert(icon_tool_item, 0)
 
     def set_widget_function(self, name, function, args=None):
+        if args is None:
+            args = []
         self.item_dict[name]["widget"].args = args
         if len(args) > 0:
             self.item_dict[name]["widget"].connect(
