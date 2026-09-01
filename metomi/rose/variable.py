@@ -465,7 +465,7 @@ def _scan_trigger_string(string):
             and not any(is_in_quotes.values())
             and i + 1 < len(string)
         ):
-            for delim, _ in delim_tokens.items():
+            for delim in delim_tokens:
                 if string[i + 1 : i + 1 + len(delim)] == delim:
                     # A valid escape character before a delimiter.
                     # Discard the escape character for the parsed text.
