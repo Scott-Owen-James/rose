@@ -424,6 +424,8 @@ class RosieSvnPostCommitHook(RosieSvnHook):
         }
         # Latest table
         with contextlib.suppress(al.exc.IntegrityError):
+            # NOTE: if idx and branch were just added: there is
+            # no previous record.
             dao.delete(
                 LATEST_TABLE_NAME,
                 idx=vc_attrs["idx"],
