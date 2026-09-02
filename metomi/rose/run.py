@@ -215,7 +215,8 @@ class Runner:
             with contextlib.suppress(OSError):
                 os.chdir(cwd)
             # Reset os.environ
-            os.environ = dict(environ)
+            os.environ.clear()
+            os.environ.update(environ)
 
     __call__ = run
 
