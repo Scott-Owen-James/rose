@@ -184,7 +184,7 @@ class HostSelector:
                 else:
                     if name not in self.local_host_strs:
                         self.local_host_strs.append(name)
-                with contextlib.suppress((IndexError, SocketError)):
+                with contextlib.suppress(IndexError, SocketError):
                     for addrinfo_item in getaddrinfo(item, None):
                         if addrinfo_item[4][0] not in self.local_host_strs:
                             self.local_host_strs.append(addrinfo_item[4][0])

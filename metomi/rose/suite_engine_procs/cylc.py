@@ -463,8 +463,8 @@ class CylcSuiteDAO:
     def close(self):
         """Close the DB connection."""
         if self.conn is not None:
-            with contextlib.suppress((sqlite3.OperationalError,
-                                      sqlite3.ProgrammingError)):
+            with contextlib.suppress(sqlite3.OperationalError,
+                                     sqlite3.ProgrammingError):
                 self.conn.close()
 
         self.cursor = None

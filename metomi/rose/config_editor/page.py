@@ -856,13 +856,13 @@ class ConfigPage(Gtk.Box):
             return
         if self.panel_data:
             for widget in self.get_main_variable_widgets():
-                var = widget.get_parent().variable
-                if (hasattr(widget.get_parent(), "variable")
-                   and var.name == focus_variable.name
-                   and var.metadata.get("id") ==
-                   focus_variable.metadata.get("id")):
-                    widget.get_parent().grab_focus()
-                    return
+                if hasattr(widget.get_parent(), "variable"):
+                    var = widget.get_parent().variable
+                    if (var.name == focus_variable.name
+                       and var.metadata.get("id") ==
+                       focus_variable.metadata.get("id")):
+                        widget.get_parent().grab_focus()
+                        return
 
     def refresh(self, only_this_var_id=None):
         """Reload the page or selectively refresh widgets for one variable."""

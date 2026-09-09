@@ -346,7 +346,7 @@ class DAO:
         for col in from_obj.columns:
             if col.key == column:
                 if isinstance(col.type, al.types.INTEGER):
-                    with contextlib.suppress((TypeError, ValueError)):
+                    with contextlib.suppress(TypeError, ValueError):
                         value = float(value)
                 expr = getattr(col, operator)(value)
                 break

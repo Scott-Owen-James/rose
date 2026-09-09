@@ -113,7 +113,7 @@ class SchemeHandlersManager:
         Return None if there is no handler with a matching scheme.
 
         """
-        with contextlib.suppress((KeyError, TypeError)):
+        with contextlib.suppress(KeyError, TypeError):
             return self.handlers[scheme]
 
     def guess_handler(self, item):

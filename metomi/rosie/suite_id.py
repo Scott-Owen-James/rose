@@ -362,7 +362,7 @@ class SuiteId:
         if not match:
             raise SuiteIdTextError(id_text)
         self.prefix, self.sid, self.branch, self.revision = match.groups()
-        with contextlib.suppress((TypeError, ValueError)):
+        with contextlib.suppress(TypeError, ValueError):
             self.revision = int(self.revision)
         if not self.prefix:
             self.prefix = self.get_prefix_default()

@@ -198,13 +198,14 @@ class PageTable(Gtk.Table):
                 variable_widget.is_ghost
                 and not modes[metomi.rose.config_editor.SHOW_MODE_LATENT]
             ) or (
-                metomi.rose.variable.IGNORED_BY_SYSTEM in ign_reason
-                or metomi.rose.variable.IGNORED_BY_SECTION in ign_reason
-            ) and (not modes[metomi.rose.config_editor.SHOW_MODE_IGNORED] or
-                   metomi.rose.variable.IGNORED_BY_USER in ign_reason
-                   ) and not (
-                modes[metomi.rose.config_editor.SHOW_MODE_IGNORED]
-                or modes[metomi.rose.config_editor.SHOW_MODE_USER_IGNORED]
+                (metomi.rose.variable.IGNORED_BY_SYSTEM in ign_reason
+                 or metomi.rose.variable.IGNORED_BY_SECTION in ign_reason)
+                and not modes[metomi.rose.config_editor.SHOW_MODE_IGNORED]
+            ) or (
+                metomi.rose.variable.IGNORED_BY_USER in ign_reason
+                and not
+                (modes[metomi.rose.config_editor.SHOW_MODE_IGNORED]
+                 or modes[metomi.rose.config_editor.SHOW_MODE_USER_IGNORED])
             ):
                 variable_widget.hide()
             else:
