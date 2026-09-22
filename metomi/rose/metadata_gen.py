@@ -104,12 +104,12 @@ def type_gen(value):
     Returns a tuple of type and length metadata values.
 
     """
-    length = 0
+    length = 0  # noqa: SIM113
     types = []
     if not value:
         return None, '0'
-    for lenTemp, val in enumerate(metomi.rose.variable.array_split(value)):
-        length = lenTemp + 1
+    for val in metomi.rose.variable.array_split(value):
+        length += 1
         val_meta_type = "raw"
         for meta_type in [
             "integer",
@@ -129,7 +129,7 @@ def type_gen(value):
         return None, str(length)
     if all(t == types[0] for t in types):
         return types[0], str(length)
-    length = 1
+    length = 1  # noqa: SIM113
     # Now make sure derived type arrays are correctly guessed.
     # For example, types = ["A", "B", "A", "B"], length = 1
     # should be types = ["A", "B"], length = 2
