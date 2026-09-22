@@ -77,6 +77,7 @@ below:
  - Samuel Denton (Met Office, UK)
  - Louis Cianciullo (Bureau of Meteorology, Australia)
  - Scott Owen James (Met Office, UK)
+ - Wilf Wilson (Met Office, UK)
 <!-- end-shortlog -->
 
 (All contributors are identifiable with email addresses in the version control
