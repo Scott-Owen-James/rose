@@ -294,8 +294,7 @@ class RosieVCClient:
                 )
                 self.popen("svn", "export", "-q", "--force", from_id_url, dir_)
             else:
-                with open(os.path.join(dir_, "rose-suite.conf"), "w") as file:
-                    file.close()
+                open(os.path.join(dir_, "rose-suite.conf"), "w").close()
             metomi.rose.config.dump(
                 info_config, os.path.join(dir_, "rose-suite.info")
             )

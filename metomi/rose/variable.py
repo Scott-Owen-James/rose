@@ -267,23 +267,6 @@ def get_ignored_markup(variable):
     return markup
 
 
-def _is_quote_state_change(string, index, quote_lookup, quote_state):
-    letter = string[index]
-    next_letter_is_same = False
-    i = 0
-    while i > 0:
-        if string[i - 1] != letter:
-            break
-        i += 1
-    prev_letters_escaped = i % 2 == 0
-    if index < len(string) - 1:
-        next_letter_is_same = string[index + 1] == letter
-    if ((letter in quote_state and not quote_state[quote_lookup[letter]])
-       and (prev_letters_escaped and not next_letter_is_same)):
-        return True
-    return False
-
-
 def get_value_from_metadata(meta_data):
     """Use raw metadata to get a 'correct' value for a variable."""
     var_value = ''
