@@ -129,7 +129,8 @@ class GPGAgentStore(BaseStore):
         try:
             gpg_socket.connect(socket_address)
         except socket.error as exc:
-            raise GPGAgentStoreConnectionError(f"socket error: {exc}") from None
+            raise GPGAgentStoreConnectionError(f"socket error: {exc}"
+                                               ) from None
         cls._socket_receive(gpg_socket, b"^OK .*\n")
         gpg_socket.send(b"GETINFO socket_name\n")
         reply = cls._socket_receive(gpg_socket, b"^(?!OK)[^ ]+ .*\n")
