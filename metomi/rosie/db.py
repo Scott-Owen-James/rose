@@ -301,7 +301,7 @@ class DAO:
         """Construct a complex logical expression containing "(", and, etc."""
         levels = [[[]]]
         level = 0
-        for _, item in enumerate(items):
+        for item in items:
             if item == "(":
                 level += 1
                 if level > len(levels) - 1:
